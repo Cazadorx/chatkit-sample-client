@@ -5,8 +5,8 @@ import jwtdecode from "jwt-decode"
 export default class Auth {
 
   auth0 = new auth0.WebAuth({
-    domain: 'react-slack-clone-demo.eu.auth0.com',
-    clientID: 'qmpmOyWVfoUXn1gr2vfSqE6TZm0lpXHp',
+    domain: 'pusher-chatkit-demo.auth0.com',
+    clientID: 'VF0kHM9szMj0aQGEfqafrdAKVwRb2a3Q',
     redirectUri: "http://localhost:3000/callback",
     responseType: "token id_token",
     scope: "openid email profile"
