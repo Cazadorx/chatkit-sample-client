@@ -20,7 +20,7 @@ import ChatManager from './chatkit'
 import Auth from './auth/auth'
 import { Route, Router } from 'react-router-dom'
 import history from './history'
-import loading from '../public/loading.svg'
+// import loading from '../public/loading.svg'
 
 // --------------------------------------
 // Application
@@ -305,7 +305,10 @@ class Callback extends  React.Component {
     }
     return (
       <div style={style}>
-        <img src={loading} alt="loading"/>
+        <svg>
+          <use xlinkHref="loading.svg" />
+        </svg>
+        {/* <img src={loading} alt="loading"/> */}
       </div>
     );
   }
