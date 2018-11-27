@@ -2,13 +2,14 @@ import { ChatManager, TokenProvider } from '@pusher/chatkit-client'
 
 const credentials = {
   url: (accessToken) =>
-    // `https://chatkit-demo-server.herokuapp.com/token?token=${authToken}`,
-    `http://localhost:4000/token?token=${accessToken}`,
-  instanceLocator: 'v1:us1:de629ea3-2b82-46db-9380-906ef165c1db',
+    `https://zmarkan-chatkit-sample-server.glitch.me/token?token=${accessToken}`,
+  instanceLocator: 'v1:us1:7954c374-f491-4c08-b71e-5abfc0a3dc89',
 }
 
 const { instanceLocator, url } = credentials
 export default ({ state, actions }, { id, accessToken }) => {   
+
+  console.log(`id: ${id}`)
   new ChatManager({
     tokenProvider: new TokenProvider({ url: url(accessToken) }),
     instanceLocator,
@@ -24,6 +25,9 @@ export default ({ state, actions }, { id, accessToken }) => {
     })
     .then(user => {
       // Subscribe to all rooms the user is a member of
+
+      console.log(user)
+      
       Promise.all(
         user.rooms.map(room =>
           user.subscribeToRoom({

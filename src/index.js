@@ -213,16 +213,22 @@ class Main extends React.Component {
         accessToken: localStorage.getItem('access_token') 
       }
 
-      fetch('http://localhost:4000/user', {
-        method: 'POST',
-        body: JSON.stringify(existingUser)
-      }).then(
-        existingUserId => {
-          console.log("Existing user")
-          console.log(existingUser)
-          ChatManager(this, existingUser)
-        }
-      )
+
+      ChatManager(this, existingUser)
+
+      // fetch('http://localhost:4000/user', {
+      //   method: 'POST',
+      //   body: JSON.stringify(existingUser)
+      // }).then(
+      //   existingUserId => {
+      //     console.log("Existing user")
+      //     console.log(existingUser)
+      //     ChatManager(this, existingUser)
+      //   }
+      // )
+    }
+    else{
+      console.log("Not authenticated, we should probably handle this lol")
     }
   }
 
@@ -308,7 +314,6 @@ class Callback extends  React.Component {
         <svg>
           <use xlinkHref="loading.svg" />
         </svg>
-        {/* <img src={loading} alt="loading"/> */}
       </div>
     );
   }
@@ -339,12 +344,7 @@ export const makeMainRoutes = () => {
     <Router history={history}>
         <div>
           <Route path="/" render={(props) => <Main auth={auth} {...props} />} />
-          <Route 
-            path="/callback" 
-            render={(props) => {            
-              return <Callback 
-                {...props} /> 
-          }}/>
+          <Route path="/callback" render={(props) => <Callback {...props} /> }/>
         </div>
     </Router>
   )
