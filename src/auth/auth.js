@@ -7,7 +7,7 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'pusher-chatkit-demo.auth0.com',
     clientID: 'VF0kHM9szMj0aQGEfqafrdAKVwRb2a3Q',
-    redirectUri: "http://localhost:3000/callback",
+    redirectUri: "https://zmarkan.github.io/chatkit-sample-client/callback",
     responseType: "token id_token",
     scope: "openid email profile"
   });
