@@ -20,7 +20,6 @@ import ChatManager from './chatkit'
 import Auth from './auth/auth'
 import { Route, Router } from 'react-router-dom'
 import history from './history'
-// import loading from '../public/loading.svg'
 
 // --------------------------------------
 // Application
@@ -75,7 +74,7 @@ class Main extends React.Component {
       !this.state.user.roomSubscriptions[room.id] &&
       this.state.user.subscribeToRoom({
         roomId: room.id,
-        hooks: { onNewMessage: this.actions.addMessage },
+        hooks: { onMessage: this.actions.addMessage },
       }),
 
     createRoom: options =>
@@ -124,6 +123,10 @@ class Main extends React.Component {
     // --------------------------------------
 
     addMessage: payload => {
+
+      console.log("addMessage")
+      console.log(payload)
+
       const roomId = payload.room.id
       const messageId = payload.id
       // Update local message cache with new message
@@ -213,19 +216,7 @@ class Main extends React.Component {
         accessToken: localStorage.getItem('access_token') 
       }
 
-
       ChatManager(this, existingUser)
-
-      // fetch('http://localhost:4000/user', {
-      //   method: 'POST',
-      //   body: JSON.stringify(existingUser)
-      // }).then(
-      //   existingUserId => {
-      //     console.log("Existing user")
-      //     console.log(existingUser)
-      //     ChatManager(this, existingUser)
-      //   }
-      // )
     }
     else{
       console.log("Not authenticated, we should probably handle this lol")
@@ -300,8 +291,8 @@ class Callback extends  React.Component {
       position: 'absolute',
       display: 'flex',
       justifyContent: 'center',
-      height: '100vh',
-      width: '100vw',
+      height: '100%',
+      width: '100%',
       top: 0,
       bottom: 0,
       left: 0,
@@ -356,99 +347,3 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Auth0:
-
-// xauth.login();
-
-// window.localStorage.getItem('chatkit-user') && 
-//   !window.localStorage.getItem('chatkit-user').match(version) &&
-//   window.localStorage.clear()
-
-// // const server = 'https://chatkit-demo-server.herokuapp.com'
-// const server = 'http://localhost:4000'
-// const redirect = `${server}/success?url=${window.location.href.split('?')[0]}`
-
-// console.log(redirect)
-
-// let nonce = 12345
-
-// const auth = new auth0.WebAuth({
-//   domain: 'react-slack-clone-demo.eu.auth0.com',
-//   clientID: 'qmpmOyWVfoUXn1gr2vfSqE6TZm0lpXHp',
-//   redirectURI: redirect,
-//   // responseType: 'token id_token',
-//   responseType: "code",
-//   scope: 'openid email',
-// })
-
-// console.log(auth)
-// console.log("yeehaw")
-
-// const params = new URLSearchParams(window.location.search.slice(1))
-// const authCode = params.get('code')
-// const existingUser = window.localStorage.getItem('chatkit-user')
-
-// console.log("Fuck all");
-// let jebote = 4
-// console.log(jebote)
-
-
-// !existingUser && !authCode
-//   ? auth.authorize()
-//   : ReactDOM.render(<View />, document.querySelector('#root'))
-  
-   
-
-
-//Github:
-
-// window.localStorage.getItem('chatkit-user') &&
-//   !window.localStorage.getItem('chatkit-user').match(version) &&
-//   window.localStorage.clear()
-
-// const params = new URLSearchParams(window.location.search.slice(1))
-// const authCode = params.get('code')
-// const existingUser = window.localStorage.getItem('chatkit-user')
-
-// const githubAuthRedirect = () => {
-//   const client = '20cdd317000f92af12fe'
-//   const url = 'https://github.com/login/oauth/authorize'
-//   const server = 'https://chatkit-demo-server.herokuapp.com'
-//   const redirect = `${server}/success?url=${window.location.href.split('?')[0]}`
-//   window.location = `${url}?scope=user:email&client_id=${client}&redirect_uri=${redirect}`
-// }
-
-// !existingUser && !authCode
-//   ? githubAuthRedirect()
-//   : ReactDOM.render(<View />, document.querySelector('#root'))
-
-
-
-
-      // : fetch('https://chatkit-demo-server.herokuapp.com/auth', {
-      //     method: 'POST',
-      //     body: JSON.stringify({ code: authCode }),
-      //   })
-      //     .then(res => res.json())
-      //     .then(user => {
-      //       user.version = version
-      //       window.localStorage.setItem('chatkit-user', JSON.stringify(user))
-      //       window.history.replaceState(null, null, window.location.pathname)
-      //       ChatManager(this, user)
-      //     })

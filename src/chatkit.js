@@ -26,16 +26,20 @@ export default ({ state, actions }, { id, accessToken }) => {
     .then(user => {
       // Subscribe to all rooms the user is a member of
 
-      console.log(user)
-      
+      console.log("subscribe to rooms")
+
       Promise.all(
-        user.rooms.map(room =>
-          user.subscribeToRoom({
+        user.rooms.map(room => {
+          
+          console.log(room)
+
+          return user.subscribeToRoom({
             roomId: room.id,
-            hooks: { onNewMessage: actions.addMessage },
+            hooks: { onMessage: actions.addMessage },
           })
-        )
+        })
       ).then(rooms => {
+        console.log(rooms)
         actions.setUser(user)
         // Join the first room in the users room list
         user.rooms.length > 0 && actions.joinRoom(user.rooms[0])
