@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/chatkit-sample-client/static/js/runtime~main.5e69e977.js"
   },
   {
-    "revision": "9329ffc687bf81cce064",
-    "url": "/chatkit-sample-client/static/js/main.9329ffc6.chunk.js"
+    "revision": "ee7d04af0be3e4066a4a",
+    "url": "/chatkit-sample-client/static/js/main.ee7d04af.chunk.js"
   },
   {
     "revision": "27f5c79231334e969f23",
     "url": "/chatkit-sample-client/static/js/1.27f5c792.chunk.js"
   },
   {
-    "revision": "9329ffc687bf81cce064",
+    "revision": "ee7d04af0be3e4066a4a",
     "url": "/chatkit-sample-client/static/css/main.97fec000.chunk.css"
   },
   {
-    "revision": "48a3963265576dad770b8d064546397a",
+    "revision": "aaba826a963b963cd8a0c4400eba8dc5",
     "url": "/chatkit-sample-client/index.html"
   }
 ];
