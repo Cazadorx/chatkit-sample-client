@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { set, del } from 'object-path-immutable'
-import { version } from '../package.json'
 import './index.css'
 
 import { UserHeader } from './components/UserHeader'
@@ -14,16 +13,102 @@ import { RoomHeader } from './components/RoomHeader'
 import { CreateRoomForm } from './components/CreateRoomForm'
 import { WelcomeScreen } from './components/WelcomeScreen'
 import { JoinRoomScreen } from './components/JoinRoomScreen'
+import { Router, Route, Link } from "react-router-dom";
+
 
 import ChatManager from './chatkit'
 
 import Auth from './auth/auth'
-import { Route, Router } from 'react-router-dom'
 import history from './history'
 
 // --------------------------------------
 // Application
 // --------------------------------------
+
+class Chat extends React.Component {
+  
+  render(){
+    return <Main />
+  }
+
+
+}
+
+class Loading extends React.Component {
+  //While login is happening
+  render() {
+    return <h1>Loading...</h1>
+  }
+}
+
+class Authorizer extends React.Component {
+
+  render(){
+    return <h1>Authorizing...</h1>
+  }
+  
+}
+
+class App extends React.Component {
+
+  constructor(){
+    super()
+    this.auth = new Auth()
+    this.authCallback = this.authCallback.bind(this)
+    this.handleAuthentication = this.handleAuthentication.bind(this)
+    this.hasHashToken = this.hasHashToken.bind(this)
+  }
+
+  // handleAuthentication = ({location}, callback) => {
+  //   if (/access_token|id_token|error/.test(location.hash)) {
+  //     auth.handleAuthentication(callback);
+  //   }
+  // }
+
+  hasHashToken({location}) { return /access_token|id_token|error/.test(location.hash)}
+
+  authCallback(authState) {
+    // this.setState( {authState} )
+    if (authState.isAuthenticated()){
+
+
+    }
+
+
+    if(this.hasHashToken(this.props)){
+      
+    }
+
+    this.setState({}) //Authorizer
+  }
+
+  componentDidMount(){
+    //Check authenticated - proceed
+
+    //If not authenticated -> trigger auth login
+
+    //Check auth0 hash thing -> process and re-login
+
+  }
+
+  render() {
+
+    if(!this.props.auth.isAuthenticated()) 
+      this.props.auth.login()
+
+    if(auth.isAlreadyAuthenticated()) {
+      // auth.auth0.che
+      return(<Chat/>)
+    }
+
+    if(auth.containsHashToken()){
+      return(<Loading  authCallback = {this.authCallback} />)
+    }
+
+    return(<Authorizer authCallback = {this.authCallback} />)
+  }
+}
+
 
 class Main extends React.Component {
   state = {
@@ -205,22 +290,27 @@ class Main extends React.Component {
 
   componentDidMount() {
 
-    if(auth.isAuthenticated){
 
-      'Notification' in window && Notification.requestPermission()
+    // console.log(auth.isAuthenticated())
+
+    // if(auth.isAuthenticated()){
+      
+
+    //   'Notification' in window && Notification.requestPermission()
     
-      let userId = localStorage.getItem('chatkit_user')
+    //   let userId = localStorage.getItem('chatkit_user')
 
-      let existingUser = { 
-        id: userId, 
-        accessToken: localStorage.getItem('access_token') 
-      }
+    //   let existingUser = { 
+    //     id: userId, 
+    //     accessToken: localStorage.getItem('access_token') 
+    //   }
 
-      ChatManager(this, existingUser)
-    }
-    else{
-      console.log("Not authenticated, we should probably handle this lol")
-    }
+    //   ChatManager(this, existingUser)
+    // }
+    // else{
+    //   handleAuthentication(this.props, () => history.replace('/'));
+    //   // console.log("Not authenticated, we should probably handle this lol")
+    // }
   }
 
   render() {
@@ -234,8 +324,15 @@ class Main extends React.Component {
     } = this.state
     const { createRoom, createConvo, removeUserFromRoom } = this.actions
 
-    console.log(`Authenticated: ${auth.isAuthenticated()}`)
-    if(!auth.isAuthenticated()) this.props.auth.login()
+    // //Check authenticated - proceed
+
+    // //If not authenticated -> trigger auth login
+
+    // //Check auth0 hash thing -> process and re-login
+
+
+    // console.log(`Authenticated: ${auth.isAuthenticated()}`)
+    // if(!auth.isAuthenticated()) this.props.auth.login()
 
     return (
       <main>
@@ -284,66 +381,22 @@ class Main extends React.Component {
   }
 }
 
-class Callback extends  React.Component {
 
-  render() {
-    const style = {
-      position: 'absolute',
-      display: 'flex',
-      justifyContent: 'center',
-      height: '100%',
-      width: '100%',
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-      backgroundColor: 'white',
-
-    }
-    return (
-      <div style={style}>
-        <svg>
-          <use xlinkHref="loading.svg" />
-        </svg>
-      </div>
-    );
-  }
-
-  componentDidMount() {
-    handleAuthentication(
-      this.props, 
-      (accessToken, userId) => {
-        history.replace('/')
-      });
-  }
-
-}
 // --------------------------------------
 // Authentication
 // --------------------------------------
 
 const auth = new Auth()
 
-const handleAuthentication = ({location}, callback) => {
-  if (/access_token|id_token|error/.test(location.hash)) {
-    auth.handleAuthentication(callback);
-  }
-}
+// const handleAuthentication = ({location}, callback) => {
+//   if (/access_token|id_token|error/.test(location.hash)) {
+//     auth.handleAuthentication(callback);
+//   }
+// }
 
-export const makeMainRoutes = () => {
-  return (
-    <Router history={history}>
-        <div>
-          <Route path="/" render={(props) => <Main auth={auth} {...props} />} />
-          <Route path="/callback" render={(props) => <Callback {...props} /> }/>
-        </div>
-    </Router>
-  )
-}
-
-const routes = makeMainRoutes();
 ReactDOM.render(
-  routes,
+    <Router history={history}>
+      <Route path="/" render={(props) => <App auth={auth} {...props} />} />
+    </Router>,
   document.getElementById('root')
 );
-
