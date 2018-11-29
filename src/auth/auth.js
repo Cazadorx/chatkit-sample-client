@@ -23,10 +23,32 @@ export default class Auth {
     this.getUserId = this.getUserId.bind(this)
   }
 
+  isAuthenticated() {
+    // Check whether the current time is past the 
+    // Access Token's expiry time
+    let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    return new Date().getTime() < expiresAt;
+  }
+
+  login() {
+    this.auth0.authorize();    
+  }
+
+  getAuthToken() {
+    return localStorage.getItem('access_token')
+  }
+
+  getUserId() { //Unsafe, not verified
+    const idToken = localStorage.getItem('id_token')
+    return jwtdecode(idToken).email
+  }
+
   handleAuthentication(callback) {
     this.auth0.parseHash((err, authResult) => {
         if (authResult && authResult.accessToken && authResult.idToken) {
             this.setSession(authResult);
+            console.log("AUTH something")
+            console.log(authResult)
             const email = this.getUserId(authResult.idToken)
             callback(authResult, email)
         } else if (err) {
@@ -44,9 +66,9 @@ export default class Auth {
     localStorage.setItem('id_token', authResult.idToken)
     localStorage.setItem('expires_at', expiresAt)
 
-    const idToken = jwtdecode(authResult.idToken)
-    const email = idToken.email
-    localStorage.setItem('chatkit_user', email)
+    // const idToken = jwtdecode(authResult.idToken)
+    // const email = idToken.email
+    // localStorage.setItem('chatkit_user', email)
     console.log("SET SESSION")
   }
 
@@ -58,24 +80,5 @@ export default class Auth {
     localStorage.removeItem('chatkit_user')
     // navigate to the home route
     // history.replace('/home');s
-  }
-
-  isAuthenticated() {
-    // Check whether the current time is past the 
-    // Access Token's expiry time
-    let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime() < expiresAt;
-  }
-
-  login() {
-    this.auth0.authorize();    
-  }
-
-  getAuthToken() {
-    return localStorage.getItem('access_token')
-  }
-
-  getUserId(idToken) { //Unsafe, not verified
-      return jwtdecode(idToken).email
   }
 }
