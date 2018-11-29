@@ -25,7 +25,6 @@ export default ({ state, actions }, { id, accessToken }) => {
     })
     .then(user => {
       // Subscribe to all rooms the user is a member of
-
       console.log("subscribe to rooms")
 
       Promise.all(
