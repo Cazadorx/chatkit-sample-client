@@ -9,30 +9,17 @@ const time = string => {
 }
 
 class Attachment extends React.Component {
-  fetchURL = () =>
-    this.props.user
-      .fetchAttachment({ url: this.props.link })
-      .then(fetched =>
-        this.setState({ src: fetched.link, name: fetched.file.name })
-      )
-  componentDidMount() {
-    this.props.link && setInterval(this.fetchURL, 1000 * 60, this.fetchURL())
-  }
   render() {
-    return this.state
-      ? {
-          image: (
-            <img controls={true} src={this.state.src} alt={this.state.name} />
-          ),
-          video: <video controls={true} src={this.state.src} />,
-          audio: <audio controls={true} src={this.state.src} />,
-          file: (
-            <a href={this.state.src} download>
-              Download File
-            </a>
-          ),
-        }[this.props.type]
-      : null
+    if(this.props.type === 'image'){
+      return  <img controls={true} src={this.props.link} alt={this.props.name} />
+    }
+    if(this.props.type === 'video'){
+      return <video controls={true} src={this.props.link} />
+    }
+    if(this.props.type === 'audio'){
+      return <audio controls={true} src={this.props.link} />
+    }
+    return <a href={this.props.link} download>Download File</a>
   }
 }
 
@@ -59,9 +46,9 @@ export const Message = ({ user, createConvo }) => message =>
         </p>
         {message.attachment ? (
           <Attachment
-            user={user}
             link={message.attachment.link}
             type={message.attachment.type}
+            name={message.attachment.name}
           />
         ) : null}
       </div>
