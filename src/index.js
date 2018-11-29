@@ -62,16 +62,6 @@ class App extends React.Component {
     this.setState(authState)
   }
 
-  componentDidMount(){
-    //Check authenticated - proceed
-
-    //If not authenticated -> trigger auth login
-
-    //Check auth0 hash thing -> process and re-login
-
-    //TODO: not sure we need that.
-  }
-
   render() {
 
     if(this.props.auth.isAuthenticated()) return(<Chat userId = {this.auth.getUserId()}/>)
@@ -90,7 +80,6 @@ class App extends React.Component {
       />)
   }
 }
-
 
 class Main extends React.Component {
   state = {
@@ -334,7 +323,6 @@ class Main extends React.Component {
     )
   }
 }
-
 
 // --------------------------------------
 // Authentication
