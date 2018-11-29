@@ -14,12 +14,12 @@ import { CreateRoomForm } from './components/CreateRoomForm'
 import { WelcomeScreen } from './components/WelcomeScreen'
 import { JoinRoomScreen } from './components/JoinRoomScreen'
 import { Router, Route, Link } from "react-router-dom";
+import createBrowserHistory from "history/createBrowserHistory";
 
 
 import ChatManager from './chatkit'
 
 import Auth from './auth/auth'
-import history from './history'
 
 // --------------------------------------
 // Application
@@ -343,7 +343,7 @@ class Main extends React.Component {
 const auth = new Auth()
 
 ReactDOM.render(
-    <Router history={history}>
+    <Router history={createBrowserHistory()} >
       <Route path="/" render={(props) => <App auth={auth} {...props} />} />
     </Router>,
   document.getElementById('root')

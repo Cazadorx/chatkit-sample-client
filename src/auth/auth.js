@@ -1,5 +1,4 @@
 import auth0 from "auth0-js";
-import history from "../history"
 import jwtdecode from "jwt-decode"
 
 export default class Auth {
@@ -52,7 +51,7 @@ export default class Auth {
             const email = this.getUserId(authResult.idToken)
             callback(authResult, email)
         } else if (err) {
-          history.replace('/error');
+          // history.replace('/error');
           console.log(err);
           alert(`Error: ${err.error}. Check the console for further details.`);
         }
