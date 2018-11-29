@@ -46,12 +46,9 @@ export default class Auth {
     this.auth0.parseHash((err, authResult) => {
         if (authResult && authResult.accessToken && authResult.idToken) {
             this.setSession(authResult);
-            console.log("AUTH something")
-            console.log(authResult)
             const email = this.getUserId(authResult.idToken)
             callback(authResult, email)
         } else if (err) {
-          // history.replace('/error');
           console.log(err);
           alert(`Error: ${err.error}. Check the console for further details.`);
         }
@@ -64,11 +61,6 @@ export default class Auth {
     localStorage.setItem('access_token', authResult.accessToken)
     localStorage.setItem('id_token', authResult.idToken)
     localStorage.setItem('expires_at', expiresAt)
-
-    // const idToken = jwtdecode(authResult.idToken)
-    // const email = idToken.email
-    // localStorage.setItem('chatkit_user', email)
-    console.log("SET SESSION")
   }
 
   logout() {
@@ -77,7 +69,6 @@ export default class Auth {
     localStorage.removeItem('id_token')
     localStorage.removeItem('expires_at')
     localStorage.removeItem('chatkit_user')
-    // navigate to the home route
-    // history.replace('/home');s
+    //TODO: callback to reset the app state.
   }
 }
