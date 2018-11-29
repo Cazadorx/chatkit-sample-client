@@ -1,13 +1,13 @@
 {
   "main.css": "/chatkit-sample-client/static/css/main.97fec000.chunk.css",
-  "main.js": "/chatkit-sample-client/static/js/main.0d43af47.chunk.js",
-  "main.js.map": "/chatkit-sample-client/static/js/main.0d43af47.chunk.js.map",
+  "main.js": "/chatkit-sample-client/static/js/main.bf557288.chunk.js",
+  "main.js.map": "/chatkit-sample-client/static/js/main.bf557288.chunk.js.map",
   "static/js/1.9ac58ae2.chunk.js": "/chatkit-sample-client/static/js/1.9ac58ae2.chunk.js",
   "static/js/1.9ac58ae2.chunk.js.map": "/chatkit-sample-client/static/js/1.9ac58ae2.chunk.js.map",
   "runtime~main.js": "/chatkit-sample-client/static/js/runtime~main.5e69e977.js",
   "runtime~main.js.map": "/chatkit-sample-client/static/js/runtime~main.5e69e977.js.map",
   "static/css/main.97fec000.chunk.css.map": "/chatkit-sample-client/static/css/main.97fec000.chunk.css.map",
   "index.html": "/chatkit-sample-client/index.html",
-  "precache-manifest.a0e7d25a58bad08156e6ba95f5f8fa22.js": "/chatkit-sample-client/precache-manifest.a0e7d25a58bad08156e6ba95f5f8fa22.js",
+  "precache-manifest.92eaaa5925206538b8737a998360d3b5.js": "/chatkit-sample-client/precache-manifest.92eaaa5925206538b8737a998360d3b5.js",
   "service-worker.js": "/chatkit-sample-client/service-worker.js"
 }
