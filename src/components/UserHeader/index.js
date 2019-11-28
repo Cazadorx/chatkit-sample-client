@@ -11,7 +11,7 @@ export const UserHeader = ({ user = {} }) => (
       <h3>{user.name}</h3>
       <h5>{user.id && `${user.id}`}</h5>
     </div>
-<input type="button" onclick="location.href='http://google.com';" value="Go to Google" />
+<input type="button" onclick="location.href='/';" value="Go to Google" />
 
   </header>
 )
