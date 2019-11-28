@@ -11,7 +11,7 @@ export const UserHeader = ({ user = {} }) => (
       <h3>{user.name}</h3>
       <h5>{user.id && `${user.id}`}</h5>
 
-<input type="button" onclick="location.href='https://google.com';" value="log out" />
+<input type="button" onclick="location.href='https://YOUR_DOMAIN/v2/logout?federated';" value="log out" />
     
 </div>
 
