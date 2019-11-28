@@ -11,7 +11,7 @@ export const UserHeader = ({ user = {} }) => (
       <h3>{user.name}</h3>
       <h5>{user.id && `${user.id}`}</h5>
 
-<input type="button" onclick="location.href='https://https://dev-bq7tr8d4.auth0.com';" value="Go to Google" />
+<input type="button" onclick="location.href='https://https://dev-bq7tr8d4.auth0.com';" value="log out" />
     
 
 
