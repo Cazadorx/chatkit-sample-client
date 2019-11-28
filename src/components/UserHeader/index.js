@@ -13,7 +13,7 @@ export const UserHeader = ({ user = {} }) => (
 
 <input type="button" onclick="location.href='https://google.com';" value="log out" />
     
-
+</div>
 
   </header>
 )
