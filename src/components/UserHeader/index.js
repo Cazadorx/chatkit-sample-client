@@ -11,7 +11,7 @@ export const UserHeader = ({ user = {} }) => (
       <h3>{user.name}</h3>
       <h5>{user.id && `${user.id}`}</h5>
 
-<input type="button" onclick="location.href='https://ubv-trujillo-eje-cacique-pitijoc.netlify.com';" value="Go to Google" />
+<input type="button" onclick="location.href='https://ubv-trujillo-eje-cacique-pitijoc.netlify.com/index.html';" value="Go to Google" />
     </div>
 
 
