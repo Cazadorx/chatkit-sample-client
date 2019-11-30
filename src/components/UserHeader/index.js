@@ -1,6 +1,7 @@
 import React from 'react'
 import style from './index.module.css'
 import { Link } from 'react-router-dom';
+import {logout} from 'chatkit-sample-client/src/auth/'
 
 const placeholder =
   'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
