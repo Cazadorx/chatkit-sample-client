@@ -14,7 +14,7 @@ export const UserHeader = ({ user = {} }) => (
 
 
 <button
-                onClick={() => console.log("hi")}
+                onClick={() => <a href = "www.google.com" ><a/>}
                
               >
                 Log Out
