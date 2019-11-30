@@ -15,7 +15,7 @@ export const UserHeader = ({ user = {} }) => (
 
 <button
                 onClick={() => auth.logout()}
-                className="btn btn-light"
+               
               >
                 Log Out
               </button> 
