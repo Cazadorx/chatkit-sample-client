@@ -12,22 +12,12 @@ export const UserHeader = ({ user = {} }) => (
       <h3>{user.name}</h3>
       <h5>{user.id && `${user.id}`}</h5>
 
-class LoggingButton extends React.Component {
-  // This syntax ensures `this` is bound within handleClick.
-  // Warning: this is *experimental* syntax.
-  handleClick = () => {
-    console.log('this is:', this);
-  }
-
-  render() {
-    return (
-      <button onClick={this.handleClick}>
-       log out
-      </button>
-    );
-  }
-}
-    
+<button
+                onClick={() => auth.logout()}
+                className="btn btn-light"
+              >
+                Log Out
+              </button> 
 </div>
 
   </header>
