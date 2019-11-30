@@ -12,16 +12,9 @@ export const UserHeader = ({ user = {} }) => (
       <h3>{user.name}</h3>
       <h5>{user.id && `${user.id}`}</h5>
 
-  logout() {
-    // Clear Access Token and ID Token from local storage
-    localStorage.removeItem('access_token')
-    localStorage.removeItem('id_token')
-    localStorage.removeItem('expires_at')
-    localStorage.removeItem('chatkit_user')
-  }
 
 <button
-                onClick={() => logout()}
+                onClick={() => console.log("hi")}
                
               >
                 Log Out
