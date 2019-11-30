@@ -18,7 +18,7 @@ export const UserHeader = ({ user = {} }) => (
     localStorage.removeItem('id_token')
     localStorage.removeItem('expires_at')
     localStorage.removeItem('chatkit_user')
- 
+  }
 
 <button
                 onClick={() => logout()}
