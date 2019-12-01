@@ -62,6 +62,7 @@ export default class Auth {
     localStorage.setItem('id_token', authResult.idToken)
     localStorage.setItem('expires_at', expiresAt)
   }
+
 export const logout = () => {
 // Clear Access Token and ID Token from local storage
 localStorage.removeItem('access_token')
