@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './index.module.css'
-import { logout } from '../../auth/auth.js';;
+import logout from '../../auth/auth.js';;
 const placeholder =
   'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
 
