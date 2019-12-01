@@ -13,7 +13,7 @@ export const UserHeader = ({ user = {} }) => (
       <h5>{user.id && `${user.id}`}</h5>
 
 
-<button
+
                 <button onClick={() => logout()} >
   Log Out
 </button>
