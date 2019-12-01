@@ -63,7 +63,6 @@ export default class Auth {
     localStorage.setItem('expires_at', expiresAt)
   }
 
-
 const logout = () => {
 // Clear Access Token and ID Token from local storage
 localStorage.removeItem('access_token')
