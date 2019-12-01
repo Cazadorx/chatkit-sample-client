@@ -62,8 +62,7 @@ export default class Auth {
     localStorage.setItem('id_token', authResult.idToken)
     localStorage.setItem('expires_at', expiresAt)
   }
-
-conts logout = () => {
+export const logout = () => {
 // Clear Access Token and ID Token from local storage
 localStorage.removeItem('access_token')
 localStorage.removeItem('id_token')
@@ -72,5 +71,4 @@ localStorage.removeItem('chatkit_user')
 //TODO: callback to reset the app state.
 }
 
-export { logout };
 }
