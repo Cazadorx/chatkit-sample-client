@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './index.module.css'
-import { Link } from 'react-router-dom';
+import { logout } from '/src/auth/auth.js';
 
 const placeholder =
   'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
@@ -14,7 +14,7 @@ export const UserHeader = ({ user = {} }) => (
 
 
 <button
-                onClick={() => <a href = "www.google.com" ><a/>}
+                onClick={ logout() }
                
               >
                 Log Out
