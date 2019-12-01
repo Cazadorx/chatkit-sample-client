@@ -70,5 +70,5 @@ localStorage.removeItem('expires_at')
 localStorage.removeItem('chatkit_user')
 //TODO: callback to reset the app state.
 }
-export {logout} ;
+export logout ;
 }
