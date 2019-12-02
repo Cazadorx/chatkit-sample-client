@@ -69,7 +69,7 @@ localStorage.removeItem('id_token')
 localStorage.removeItem('expires_at')
 localStorage.removeItem('chatkit_user')
 //TODO: callback to reset the app state.
-   export default logOut;
+   
 }
 
 
