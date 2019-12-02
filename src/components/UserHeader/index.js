@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './index.module.css'
-import logout from '../../auth/auth.js';;
+import Auth from '../../auth/auth.js';;
 const placeholder =
   'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
 
@@ -13,7 +13,7 @@ export const UserHeader = ({ user = {} }) => (
 
 
 
-                <button onClick={() => logout()} >
+                <button onClick={() => Auth.logout()} >
   Log Out
 </button>
 </div>
