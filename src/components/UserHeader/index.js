@@ -13,7 +13,7 @@ export const UserHeader = ({ user = {} }) => (
 
 
 
-                <button onClick={() => console.log(typeof Auth.logout)} >
+                <button onClick={() => Auth.logout()} >
   Log Out
 </button>
 </div>
